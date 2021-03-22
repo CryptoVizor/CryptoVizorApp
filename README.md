@@ -1,5 +1,3 @@
-# CryptoVizor
-
 <p align="center">
   <img src="readmeFiles/appLogo.png" width="256" height="256">
 </p>
@@ -28,15 +26,13 @@ Because we use a paid plugin for the AppStore version we don't upload it to Gith
 
 
 
-### Supported services
----
+## Supported services
 
 The app supports image NFT that are available on opensea.
 We are working on the mp4 tokens support using the same opensea APIs.
 We also support direct connection to CryptoSpells API and any other NFT games and apps can be added using the same logic. 
 
-### Questions and Sugesstions
----
+## Questions and Sugesstions
 
 If you have any suggestions or feature requests you can post them in the issues.
 
