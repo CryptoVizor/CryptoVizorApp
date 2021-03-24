@@ -17,7 +17,7 @@ public class GetTokensData : MonoBehaviour
 
   public List<string> contractsAddresses;
 
-  public UnityEngine.XR.Interaction.Toolkit.AR.WallPlacing placementLogic;
+  public UnityEngine.XR.Interaction.Toolkit.AR.CustomPlacing placementLogic;
 
   public GameObject scroll;
 

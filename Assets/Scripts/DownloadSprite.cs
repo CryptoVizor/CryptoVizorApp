@@ -10,7 +10,7 @@ public class DownloadSprite : MonoBehaviour
   public bool placed;
   public Image cardRendered;
 
-  public UnityEngine.XR.Interaction.Toolkit.AR.WallPlacing placementLogic;
+  public UnityEngine.XR.Interaction.Toolkit.AR.CustomPlacing placementLogic;
 
   public GameObject scroll;
 

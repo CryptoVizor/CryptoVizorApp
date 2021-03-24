@@ -30,7 +30,7 @@ public class loadCryptoSpells : MonoBehaviour, loadInterface
 
   public GetTokensData canvasData;
 
-  public UnityEngine.XR.Interaction.Toolkit.AR.WallPlacing placementLogic;
+  public UnityEngine.XR.Interaction.Toolkit.AR.CustomPlacing placementLogic;
 
   public GameObject scroll;
 

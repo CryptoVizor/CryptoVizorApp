@@ -12,12 +12,12 @@ namespace UnityEngine.XR.Interaction.Toolkit.AR
     /// UnityEvent that responds to changes of hover and selection by this interactor.
     /// </summary>
     [Serializable]
-    public class WallPlacingEvent : UnityEvent<ARPlacementInteractable, GameObject> { }
+    public class CustomPlacingEvent : UnityEvent<ARPlacementInteractable, GameObject> { }
     
     /// <summary>
     /// Controls the placement of Andy objects via a tap gesture.
     /// </summary>
-    public class WallPlacing : ARBaseGestureInteractable
+    public class CustomPlacing : ARBaseGestureInteractable
     {
         [SerializeField]
         [Tooltip("A GameObject to place when a raycast from a user touch hits a plane.")]
