@@ -9,6 +9,7 @@
 [![Made with Unity](https://img.shields.io/badge/Made%20with-Unity-57b9d3.svg?style=flat-square&logo=unity)](https://unity3d.com)
 [![reddit](https://badges.aleen42.com/src/reddit_flat_square.svg)](https://www.reddit.com/user/CryptoVizor)
 [![twitter](https://badges.aleen42.com/src/twitter_flat_square.svg)](https://twitter.com/CryptoVizorNFT)
+[![Stake to support us](https://badge.devprotocol.xyz/0x3059bD281418179A83cAE3771b0dD6C47807EA3a/descriptive)](https://stakes.social/0x3059bD281418179A83cAE3771b0dD6C47807EA3a)
 ---
 
 
