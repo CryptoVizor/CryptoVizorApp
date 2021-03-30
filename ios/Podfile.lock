@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutter_unity_widget (4.0.0):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_unity_widget (from `.symlinks/plugins/flutter_unity_widget/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_unity_widget:
+    :path: ".symlinks/plugins/flutter_unity_widget/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  flutter_unity_widget: e509f3109933aa0c63b1bc149ca3d5b90fb68543
+
+PODFILE CHECKSUM: d8ef5a9de48afff048eb1f4d22d90535655b17a4
+
+COCOAPODS: 1.10.1
