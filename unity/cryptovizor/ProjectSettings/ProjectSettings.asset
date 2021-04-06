@@ -716,6 +716,7 @@ PlayerSettings:
   assemblyVersionValidation: 1
   gcWBarrierValidation: 0
   apiCompatibilityLevelPerPlatform:
+    iOS: 3
     iPhone: 3
   m_RenderingPath: 1
   m_MobileRenderingPath: 1

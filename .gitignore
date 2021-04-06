@@ -2,6 +2,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/macos,unity
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,unity
 
+.dart_tool
+
 ### macOS ###
 # General
 .DS_Store

@@ -80,7 +80,7 @@ packages:
       name: flutter_unity_widget
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.1+1"
+    version: "4.0.2"
   matcher:
     dependency: transitive
     description:
