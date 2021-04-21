@@ -1,9 +1,14 @@
 ﻿
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
+using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.Networking;
+using UnityEngine.Video;
+using Newtonsoft.Json.Linq;
 
 namespace UnityEngine.XR.Interaction.Toolkit.AR
 {
@@ -31,15 +36,17 @@ namespace UnityEngine.XR.Interaction.Toolkit.AR
 
         public GameObject okButton;
 
+        public Texture2D placeholder;
+
         Sprite card_sprite;
         
         public Sprite card { get { return card_sprite; } set { card_sprite = value; } }
 
         public string slug;
         public string tokenID;
-        
 
         public string name;
+        public string animation;
 
         public GetTokensData canvasData;
 
@@ -110,6 +117,11 @@ namespace UnityEngine.XR.Interaction.Toolkit.AR
 
                 var placementObject = Instantiate(placementPrefab, hit.pose.position, transformObject.transform.rotation);
                 var placementSprite = placementObject.GetComponentInChildren<SpriteRenderer>(false);
+                if (animation != ""){
+                  var placementPlayer = placementObject.GetComponentInChildren<VideoPlayer>(false);
+                  placementPlayer.enabled = true;
+                  placementPlayer.url = animation;
+                }
                 placementSprite.sprite = card;
                 var placementMetadata = placementObject.GetComponentInChildren<cardMetadata>(false);
                 placementMetadata.tokenID = tokenID;
@@ -141,5 +153,60 @@ namespace UnityEngine.XR.Interaction.Toolkit.AR
                 card = null;
             }
         }
+
+        public void setCard(string message){
+            JObject m = JObject.Parse(message);
+            tokenID =  m.GetValue("tokenIDOverlay").Value<string>();
+            name = m.GetValue("nameOverlay").Value<string>();
+            slug = m.GetValue("nameOverlay").Value<string>();
+            animation = m.GetValue("animation").Value<string>();
+            string URI = m.GetValue("URI").Value<string>();
+            StartCoroutine(GetCardImage(URI));
+        }
+          IEnumerator GetCardImage(string uri){
+    using (UnityWebRequest webRequest = UnityWebRequestTexture.GetTexture(uri))
+    {
+      // Request and wait for the desired page.
+      yield return webRequest.SendWebRequest();
+      if (webRequest.isNetworkError)
+      {
+        Debug.Log(webRequest.error);
+      }
+      else
+      {
+        Texture2D webTexture = ((DownloadHandlerTexture)webRequest.downloadHandler).texture as Texture2D;
+        if (isBogus(webTexture))
+        {
+          Sprite webSpriteBogus = SpriteFromTexture2D(placeholder);
+          card = webSpriteBogus;
+        } else {
+        Sprite webSprite = SpriteFromTexture2D(webTexture);
+        card = webSprite;
+        }
+      }
+    }
+  }
+   public bool isBogus(Texture tex)
+  {
+    if (!tex) return true;
+
+    byte[] png1 = (tex as Texture2D).EncodeToPNG();
+    byte[] questionMarkPNG = new byte[] { 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 8, 0, 0, 0, 8, 8, 2, 0, 0, 0, 75, 109, 41, 220, 0, 0, 0, 65, 73, 68, 65, 84, 8, 29, 85, 142, 81, 10, 0, 48, 8, 66, 107, 236, 254, 87, 110, 106, 35, 172, 143, 74, 243, 65, 89, 85, 129, 202, 100, 239, 146, 115, 184, 183, 11, 109, 33, 29, 126, 114, 141, 75, 213, 65, 44, 131, 70, 24, 97, 46, 50, 34, 72, 25, 39, 181, 9, 251, 205, 14, 10, 78, 123, 43, 35, 17, 17, 228, 109, 164, 219, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130, };
+
+    return Equivalent(png1, questionMarkPNG);
+  }
+
+  public bool Equivalent(byte[] bytes1, byte[] bytes2)
+  {
+    if (bytes1.Length != bytes2.Length) return false;
+    for (int i = 0; i < bytes1.Length; i++)
+      if (!bytes1[i].Equals(bytes2[i])) return false;
+    return true;
+  }
+   Sprite SpriteFromTexture2D(Texture2D texture)
+  {
+
+    return Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
+  }
     }
 }
