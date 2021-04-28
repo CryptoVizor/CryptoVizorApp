@@ -117,12 +117,13 @@ namespace UnityEngine.XR.Interaction.Toolkit.AR
 
                 var placementObject = Instantiate(placementPrefab, hit.pose.position, transformObject.transform.rotation);
                 var placementSprite = placementObject.GetComponentInChildren<SpriteRenderer>(false);
-                if (animation != ""){
+                if (animation != "null"){
                   var placementPlayer = placementObject.GetComponentInChildren<VideoPlayer>(false);
                   placementPlayer.enabled = true;
                   placementPlayer.url = animation;
+                } else {
+                  placementSprite.sprite = card;
                 }
-                placementSprite.sprite = card;
                 var placementMetadata = placementObject.GetComponentInChildren<cardMetadata>(false);
                 placementMetadata.tokenID = tokenID;
                 placementMetadata.name = name;
