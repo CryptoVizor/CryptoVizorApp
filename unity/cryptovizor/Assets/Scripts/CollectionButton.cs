@@ -9,7 +9,7 @@ public class CollectionButton : MonoBehaviour
     void Awake()
     {
         var UnityMessageManager = GetComponent<UnityMessageManager>();
-        UnityMessageManager.SendMessageToFlutter("overlay");
+        UnityMessageManager.SendMessageToFlutter("start");
     }
     // Start is called before the first frame update
     public void Click()
