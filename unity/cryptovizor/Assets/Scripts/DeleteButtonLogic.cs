@@ -8,11 +8,11 @@ public class DeleteButtonLogic : MonoBehaviour
 
     public GameObject Card;
 
-    public GetTokensData canvasData;
     public void delete(){
         var placementMetadata = Card.GetComponentInChildren<cardMetadata>(false);
         var spriteAnimation = Card.GetComponentInChildren<cardAnimation>(false);
-        canvasData.placedTokens[placementMetadata.slug][placementMetadata.tokenID] = false;
+        var UnityMessageManager = GetComponent<UnityMessageManager>();
+        UnityMessageManager.SendMessageToFlutter("delete:"+placementMetadata.slug+":"+placementMetadata.tokenID);
         spriteAnimation.status = "delete";
     }
     void Start()

@@ -35,6 +35,11 @@ class _UnityScreenState extends State < UnityScreen > {
   List < Map > items = [];
   bool overlay = false;
   List < Map > slugs = [];
+  String currentSlug = "";
+  Map < String,
+  bool > placed = {
+    "": false
+  };
   TextEditingController walletController = TextEditingController();
   WidgetIndex widgetIndex = WidgetIndex.login;
 
@@ -148,53 +153,54 @@ class _UnityScreenState extends State < UnityScreen > {
                     title: account,
                     iosChevron: Icon(null),
                     iosChevronPadding: EdgeInsets.zero,
-                    titleTextStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.w900, fontSize: 12,fontFamily:'Noto Sans CJK SC' ),
+                    titleTextStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.w900, fontSize: 12, fontFamily: 'Noto Sans CJK SC'),
                   ),
 
                 ],
               ),
               SettingsSection(
-                title: 'Bassic information',tiles: [
+                title: 'Bassic information', tiles: [
                   SettingsTile(
                     title: "Contact Us",
                     iosChevron: Icon(Icons.arrow_forward_ios),
-                    titleTextStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.w900, fontSize: 14,fontFamily:'Noto Sans CJK SC' ),
-                    onPressed: (context)async => await canLaunch("https://forms.gle/T5zg1pYbRhYVbkBm7") ? await launch("https://forms.gle/T5zg1pYbRhYVbkBm7") : throw 'Could not launch "https://forms.gle/T5zg1pYbRhYVbkBm7"'
-                    ,
+                    titleTextStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.w900, fontSize: 14, fontFamily: 'Noto Sans CJK SC'),
+                    onPressed: (context) async =>await canLaunch("https://forms.gle/T5zg1pYbRhYVbkBm7") ? await launch("https://forms.gle/T5zg1pYbRhYVbkBm7") : throw 'Could not launch "https://forms.gle/T5zg1pYbRhYVbkBm7"',
                   ),
                   SettingsTile(
                     title: "Privacy Policy",
                     iosChevron: Icon(Icons.arrow_forward_ios),
-                    titleTextStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.w900, fontSize: 14,fontFamily:'Noto Sans CJK SC' ),
-                    onPressed: (context)async => await canLaunch("https://www.notion.so/tart/Privacy-Policy-3fee0790959646d380ff4de8dfc19084") ? await launch("https://www.notion.so/tart/Privacy-Policy-3fee0790959646d380ff4de8dfc19084") : throw 'Could not launch "https://www.notion.so/tart/Privacy-Policy-3fee0790959646d380ff4de8dfc19084"'
+                    titleTextStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.w900, fontSize: 14, fontFamily: 'Noto Sans CJK SC'),
+                    onPressed: (context) async =>await canLaunch("https://www.notion.so/tart/Privacy-Policy-3fee0790959646d380ff4de8dfc19084") ? await launch("https://www.notion.so/tart/Privacy-Policy-3fee0790959646d380ff4de8dfc19084") : throw 'Could not launch "https://www.notion.so/tart/Privacy-Policy-3fee0790959646d380ff4de8dfc19084"'
                   ),
                   SettingsTile(
                     title: "About Us",
                     iosChevron: Icon(Icons.arrow_forward_ios),
-                    titleTextStyle: TextStyle(color: Colors.black,fontWeight: FontWeight.w900, fontSize: 14,fontFamily:'Noto Sans CJK SC' ),
-                    onPressed: (context)async => await canLaunch("https://www.notion.so/tart/Our-Team-ffc9f64068b44df397ffea9f7f33915a") ? await launch("https://www.notion.so/tart/Our-Team-ffc9f64068b44df397ffea9f7f33915a") : throw 'Could not launch "https://www.notion.so/tart/Our-Team-ffc9f64068b44df397ffea9f7f33915a"'
+                    titleTextStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.w900, fontSize: 14, fontFamily: 'Noto Sans CJK SC'),
+                    onPressed: (context) async =>await canLaunch("https://www.notion.so/tart/Our-Team-ffc9f64068b44df397ffea9f7f33915a") ? await launch("https://www.notion.so/tart/Our-Team-ffc9f64068b44df397ffea9f7f33915a") : throw 'Could not launch "https://www.notion.so/tart/Our-Team-ffc9f64068b44df397ffea9f7f33915a"'
                   )
-                  ],),
-                  SettingsSection(
-                title: '',tiles: [
+                ], ),
+              SettingsSection(
+                title: '', tiles: [
                   SettingsTile(
                     title: "Reset the app",
                     iosChevron: Icon(null),
-                    titleTextStyle: TextStyle(color: Colors.red,fontWeight: FontWeight.w900, fontSize: 14,fontFamily:'Noto Sans CJK SC' ),
-                    onPressed: (context) async{
+                    titleTextStyle: TextStyle(color: Colors.red, fontWeight: FontWeight.w900, fontSize: 14, fontFamily: 'Noto Sans CJK SC'),
+                    onPressed: (context) async {
                       final storage = new FlutterSecureStorage();
                       await storage.deleteAll();
                       setState(() {
                         widgetIndex = WidgetIndex.login;
                         account = "";
+                        slugs = [];
                       });
                     },
                   ),
-                  ],)
+                ], )
             ],
           ),
           //Collections
           Container(
+            padding: EdgeInsets.only(top:18),
             color: Colors.white,
             height: 1000,
             child: SafeArea(
@@ -218,6 +224,7 @@ class _UnityScreenState extends State < UnityScreen > {
                       },
                       child: slugs[index]["image"] != "" ?
                       Container(
+                        margin: EdgeInsets.only(top:10),
                         height: 50,
                         child: Flex(
                           direction:
@@ -246,7 +253,7 @@ class _UnityScreenState extends State < UnityScreen > {
                                 ["slug"],
                                 textAlign:
                                 TextAlign
-                                .center,
+                                .start,
                                 style: TextStyle(
                                   fontSize: 20,
                                   color: Colors
@@ -259,42 +266,59 @@ class _UnityScreenState extends State < UnityScreen > {
           Container(
             color: Colors.white,
             height: 1000,
+            padding: EdgeInsets.only(left:10, right:10, top: 10),
             child: GridView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
               gridDelegate:
-              SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-                childAspectRatio: 4 / 5,
-                crossAxisSpacing: 20,
+              SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
                 mainAxisSpacing: 0),
               itemCount: items.length,
               itemBuilder: (BuildContext ctx, index) {
-                return Container(
-                  alignment: Alignment.center,
-                  child: TextButton(
-                    onPressed: () => {
-                      this
-                        ._unityWidgetController
-                        .postJsonMessage(
-                          "ARPlacementInteractable",
-                          "setCard", {
-                            "tokenIDOverlay": items[index]
-                              ["id"],
-                            "URI": items[index]["image"],
-                            "nameOverlay": items[index]
-                              ["name"],
-                            "animation": items[index]
-                              ["animation"] != null ? items[index]
-                              ["animation"] : "null"
-                          }),
-                        setState(() {
-                          overlay = false;
-                        }),
-                        print("postJsonMessage")
-                    },
-                    child: Image.network(
-                      items[index]["image"])));
+                return Stack(children: [Container(
+                    alignment: Alignment.center,
+                    child: TextButton(
+                      onPressed: () => {
+                        if (placed.containsKey(items[index]["name"] + items[index]["id"])) {
+                          print("already placed " + items[index]["name"] + items[index]["id"])
+                        } else {
+                          print("can be placed " + items[index]["name"] + items[index]["id"]),
+
+                            this
+                            ._unityWidgetController
+                            .postJsonMessage(
+                              "ARPlacementInteractable",
+                              "setCard", {
+                                "tokenIDOverlay": items[index]
+                                  ["id"],
+                                "URI": items[index]["image"],
+                                "nameOverlay": items[index]
+                                  ["name"],
+                                "animation": items[index]
+                                  ["animation"] != null ? items[index]
+                                  ["animation"] : "null"
+                              }),
+                            setState(() {
+                              overlay = false;
+                            }),
+                            print("postJsonMessage")
+                        }
+                      },
+                      child: placed.containsKey(items[index]["name"] + items[index]["id"]) && placed[items[index]["name"] + items[index]["id"]] == true ?
+                      ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                          Colors.white,
+                          BlendMode.hue,
+                        ),
+                        child: Image.network(
+                          items[index]["image"]),
+                      ) : Image.network(
+                        items[index]["image"]))),
+                  placed.containsKey(items[index]["name"] + items[index]["id"]) && placed[items[index]["name"] + items[index]["id"]] == true ?
+                  Container(child: Text("[Placed]", style: TextStyle(backgroundColor: Colors.white, fontSize: 28, color: Colors.red), ), height: 250, width: 200, alignment: Alignment.center, ) :
+                  Container()
+                ]);
               })),
         ]) :
         Container()
@@ -347,6 +371,7 @@ class _UnityScreenState extends State < UnityScreen > {
         });
       }
       setState(() {
+        currentSlug = slug;
         items = tokens;
       });
     } catch (e) {
@@ -390,7 +415,7 @@ class _UnityScreenState extends State < UnityScreen > {
   }
 
   void onUnityMessage(message) {
-    switch (message.toString()) {
+    switch (message.toString().split(":")[0]) {
       case "overlay":
         setState(() {
           overlay = true;
@@ -412,6 +437,22 @@ class _UnityScreenState extends State < UnityScreen > {
         setState(() {
           overlay = true;
           widgetIndex = WidgetIndex.settings;
+        });
+        break;
+      case "placed":
+        setState(() {
+          print("Placed" + message.toString().split(":")[1] + message.toString().split(":")[2]);
+          setState(() {
+            placed[message.toString().split(":")[1] + message.toString().split(":")[2]] = true;
+          });
+        });
+        break;
+      case "delete":
+        setState(() {
+          print("deleted" + message.toString().split(":")[1] + message.toString().split(":")[2]);
+          setState(() {
+            placed[message.toString().split(":")[1] + message.toString().split(":")[2]] = false;
+          });
         });
         break;
       default:

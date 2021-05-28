@@ -137,6 +137,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.AR
                     canvasData.placedTokens.Add(slug, new Dictionary<string, bool>());
                 }
                 canvasData.placedTokens[slug][tokenID] = true;
+                var UnityMessageManager = GetComponent<UnityMessageManager>();
+                UnityMessageManager.SendMessageToFlutter("placed:" + placementMetadata.slug + ":" + placementMetadata.tokenID);
                 
                 // Create anchor to track reference point and set it as the parent of placementObject.
                 // TODO: this should update with a reference point for better tracking.
