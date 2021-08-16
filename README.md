@@ -13,19 +13,19 @@
 [![Stake to support us](https://badge.devprotocol.xyz/0x3059bD281418179A83cAE3771b0dD6C47807EA3a/descriptive)](https://stakes.social/0x3059bD281418179A83cAE3771b0dD6C47807EA3a)
 ---
 
-
 <p align="center">
   <b>Support US on</b>
   <br>
-  <a href="https://stakes.social/0x3059bD281418179A83cAE3771b0dD6C47807EA3a"><img width="179" alt="Screen Shot 2021-08-17 at 2 01 03" src="https://user-images.githubusercontent.com/17464685/129601828-fd461e84-bee7-4293-8fd6-f9cd3692f8ad.png"></a>
+  <br>
+  <a href="https://stakes.social/0x3059bD281418179A83cAE3771b0dD6C47807EA3a"><img width="179" src="https://user-images.githubusercontent.com/17464685/129601828-fd461e84-bee7-4293-8fd6-f9cd3692f8ad.png"></a>
 </p>
 
 <p align="center">
-  <p align="center">The app is also available on AppStore for free.</p>
+  <b>The app is also available on AppStore for free.</b>
   <br>
-  <a href="https://apps.apple.com/us/app/cryptovizor/id1529722418"><img width="179" alt="Screen Shot 2021-08-17 at 2 01 03" src="readmeFiles/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"></a>
+  <br>
+  <a href="https://apps.apple.com/us/app/cryptovizor/id1529722418"><img src="readmeFiles/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"></a>
 </p>
-
 
 There is a significant difference between GitHub and AppStore version, it is the ability to take pics.  
 Because we use a paid plugin for the AppStore version we don't upload it to Github. We will update this part to use an open-source library later.
@@ -50,8 +50,10 @@ If you have any questions you can ask them on Twitter or Reddit. The links are i
 ## How to build
 
 This project use [flutter_unity_widget](https://github.com/juicycleff/flutter-unity-view-widget) 
+
+
 So in order to build this project, you first need to build the unity project as a library.
-To do you need to install all the dependencies and then click the newly appeared flutter button.
+To do so you need to install all the dependencies and then click the newly appeared flutter button.
 
 <img width="214" alt="ExportiOS" src="https://user-images.githubusercontent.com/17464685/129600274-63598f83-e851-4141-afaa-988f6e4d1b4d.png">
 
