@@ -1,8 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/macos,unity
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,unity
-
-.dart_tool
+# Created by https://www.toptal.com/developers/gitignore/api/unity,macos
+# Edit at https://www.toptal.com/developers/gitignore?templates=unity,macos
 
 ### macOS ###
 # General
@@ -102,4 +100,4 @@ InitTestScene*.unity.meta
 InitTestScene*.unity
 
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,unity
+# End of https://www.toptal.com/developers/gitignore/api/unity,macos
