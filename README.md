@@ -6,11 +6,14 @@
 
 <p align="center">The app is iOS only for now because we only use ARKit with unity but if you wanna add ARCore support you can open a pull request.</p>
 
-[![Unity](https://img.shields.io/badge/unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white)](https://unity3d.com)
-[![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white)](https://www.reddit.com/user/CryptoVizor)
-[![Twitter](https://img.shields.io/badge/CryptoVizorNFT-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/CryptoVizorNFT)
-![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
-[![Stake to support us](https://badge.devprotocol.xyz/0x3059bD281418179A83cAE3771b0dD6C47807EA3a/descriptive)](https://stakes.social/0x3059bD281418179A83cAE3771b0dD6C47807EA3a)
+<div align="center">
+  <a href="https://unity3d.com"><img src="https://img.shields.io/badge/unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white"></a>
+  <a href="https://www.reddit.com/user/CryptoVizor"><img src="https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white"></a>
+  <a href="https://twitter.com/CryptoVizorNFT"><img src="https://img.shields.io/badge/CryptoVizorNFT-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white"></a>
+  <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white"></a>
+  <a href="https://stakes.social/0x3059bD281418179A83cAE3771b0dD6C47807EA3a"><img src="https://badge.devprotocol.xyz/0x3059bD281418179A83cAE3771b0dD6C47807EA3a/descriptive"></a>
+  </div>
+  
 ---
 
 <p align="center">
