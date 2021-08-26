@@ -15,16 +15,19 @@
   </div>
   
 ---
+<div align="center">
+  <a href="https://github.com/CryptoVizor/CryptoVizorApp/edit/main/README.md"><img src="https://img.shields.io/badge/Maintenance%20Level-Not%20Maintained-yellow.svg"></a>
+</div>
 
 <p align="center">
-  <b>Support US on</b>
+  <b>The repository is not actively maintained but you still can support it on</b>
   <br>
   <br>
   <a href="https://stakes.social/0x3059bD281418179A83cAE3771b0dD6C47807EA3a"><img width="179" src="https://user-images.githubusercontent.com/17464685/129601828-fd461e84-bee7-4293-8fd6-f9cd3692f8ad.png"></a>
 </p>
 
 <p align="center">
-  <b>The app is also available on AppStore for free.</b>
+  <b>The app is also available on the AppStore for free.</b>
   <br>
   <br>
   <a href="https://apps.apple.com/us/app/cryptovizor/id1529722418"><img src="readmeFiles/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"></a>
@@ -44,11 +47,6 @@ Because we use a paid plugin for the AppStore version we don't upload it to Gith
 
 The app supports image and MP4 NFTs that are available on opensea.
 
-## Questions and Sugesstions
-
-If you have any suggestions or feature requests you can post them in the issues.
-
-If you have any questions you can ask them on Twitter or Reddit. The links are in the header.
 
 ## How to build
 
